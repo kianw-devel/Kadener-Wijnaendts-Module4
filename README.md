@@ -27,6 +27,6 @@ Steady State for 45C heating - 30 pwm
 
 0pwm Cooling: StartTime: 0s, Temp: 51C, EndTime: 200s, EndTemp: 37C
 33pwm Cooling: StartTime: 0s, Temp: 38C, EndTime: 185s, EndTemp: 30.5C
-65pwm Cooling: StartTime: 0s, Temp: 30C, EndTime: 140s, EndTemp: 180.C
-98pwm Cooling: StartTime: 0s, Temp: 47C, EndTime: 130s, EndTemp: 46C
+65pwm Cooling: StartTime: 0s, Temp: 30C, EndTime: 140s, EndTemp: 24.5C
+98pwm Cooling: StartTime: 0s, Temp: 47C, EndTime: 207s, EndTemp: 18C
 130pwm Cooling: StartTime: 0s, Temp: 33C, EndTime: 290s, EndTemp: 10.4C
