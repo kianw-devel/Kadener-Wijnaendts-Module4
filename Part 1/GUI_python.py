@@ -15,8 +15,6 @@ SERIAL_PORT = "/dev/cu.usbmodem101"
 BAUD_RATE = 9600
 WINDOW_DURATION_SECONDS = 120.0
 UPDATE_INTERVAL_MILLISECONDS = 100
-TEMPERATURE_MIN_C = 0.0
-TEMPERATURE_MAX_C = 50.0
 CSV_FILENAME = "temperature_measurements.csv"
 
 
@@ -96,7 +94,7 @@ class TemperatureWindow(QtWidgets.QMainWindow):
 		self.temperature_plot = pg.PlotWidget()
 		self.temperature_plot.setLabel("bottom", "Time", units="s")
 		self.temperature_plot.setLabel("left", "Temperature", units="C")
-		self.temperature_plot.setYRange(TEMPERATURE_MIN_C, TEMPERATURE_MAX_C)
+		self.temperature_plot.enableAutoRange()
 		self.temperature_plot.showGrid(x=True, y=True, alpha=0.25)
 		self.temperature_curve = self.temperature_plot.plot(
 			pen=pg.mkPen("#d95f02", width=2)
@@ -106,7 +104,7 @@ class TemperatureWindow(QtWidgets.QMainWindow):
 		self.pwm_plot = pg.PlotWidget()
 		self.pwm_plot.setLabel("bottom", "Time", units="s")
 		self.pwm_plot.setLabel("left", "PWM")
-		self.pwm_plot.setYRange(0, 255)
+		self.pwm_plot.enableAutoRange()
 		self.pwm_plot.showGrid(x=True, y=True, alpha=0.25)
 		self.heat_curve = self.pwm_plot.plot(pen=pg.mkPen("r", width=2))
 		self.cool_curve = self.pwm_plot.plot(pen=pg.mkPen("b", width=2))
