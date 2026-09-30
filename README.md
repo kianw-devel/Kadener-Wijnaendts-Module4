@@ -36,21 +36,21 @@ Steady State for 45C heating - 30 pwm
 
 # Part 4: Temperature vs. Signed PWM
 
-![Steady-state temperature versus signed PWM](Part%204/temperature_vs_signed_pwm.png)
+![Baseline-corrected temperature versus signed PWM](Part%204/temperature_vs_signed_pwm.png)
 
-The following table includes values from the temperature_measurements.csv file.
+The following table uses the corrected room-temperature baseline of **22.00 °C at 0 PWM**. A constant offset was applied to each complete heating/cooling series from `temperature_measurements.csv`; the raw data were not overwritten. Because a constant vertical offset does not change $\Delta T/\Delta u$, the fitted slopes remain the same.
 
 | Direction | PWM (counts) | Steady-state temperature (°C) |
 |---|---:|---:|
-| Heating | 0 | 35.60 |
-| Heating | 8 | 39.20 |
-| Heating | 15 | 42.89 |
-| Heating | 23 | 46.09 |
-| Heating | 30 | 50.45 |
-| Cooling | 0 | 35.29 |
-| Cooling | -33 | 30.35 |
-| Cooling | -65 | 24.43 |
-| Cooling | -98 | 17.83 |
-| Cooling | -130 | 9.75 |
+| Heating | 0 | 22.00 |
+| Heating | 8 | 25.60 |
+| Heating | 15 | 29.29 |
+| Heating | 23 | 32.49 |
+| Heating | 30 | 36.85 |
+| Cooling | 0 | 22.00 |
+| Cooling | -33 | 17.06 |
+| Cooling | -65 | 11.14 |
+| Cooling | -98 | 4.54 |
+| Cooling | -130 | -3.54 |
 
-Using a straight-line fit over the measured range, the temperature susceptibility is approximately **0.49 °C per PWM count for heating** and **0.20 °C per PWM count for cooling** (with cooling plotted on the negative-PWM side). These fitted slopes are approximate overall responses.
+Using a straight-line fit over the corrected data, the temperature susceptibility is **0.4872 °C per PWM count for heating** and **0.1957 °C per PWM count for cooling** (approximately **0.49** and **0.20 °C per PWM count**, respectively, with cooling plotted on the negative-PWM side). These are unchanged because only the temperature baseline was shifted.

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "temperature_measurements.csv"
 OUTPUT_PATH = Path(__file__).resolve().parent / "temperature_vs_signed_pwm.png"
+CORRECTED_AMBIENT_C = 22.0
 
 spans = {}
 current_key = None
@@ -46,6 +47,20 @@ for name, mode, pwm_values, sign, color, marker in (
         steady_temperature = sum(temperatures[-10:]) / 10
         points.append((sign * pwm, steady_temperature))
 
+    # Correct the temperature baseline without modifying the raw measurements.
+    # Each branch used a slightly different measured zero-PWM temperature, so
+    # shift the whole branch by one constant offset. This places PWM = 0 at the
+    # corrected 22 C ambient while preserving every temperature difference and
+    # therefore preserving the fitted susceptibility in C/PWM count.
+    measured_zero_pwm = next(
+        temperature for signed_pwm, temperature in points if signed_pwm == 0
+    )
+    temperature_offset = CORRECTED_AMBIENT_C - measured_zero_pwm
+    points = [
+        (signed_pwm, temperature + temperature_offset)
+        for signed_pwm, temperature in points
+    ]
+
     x_values = [point[0] for point in points]
     y_values = [point[1] for point in points]
     x_mean = sum(x_values) / len(x_values)
@@ -82,7 +97,7 @@ for name, points, slope, intercept, color, marker in series:
         label=f"{name} linear fit ({slope:.2f} °C/count)",
     )
 
-axes.set_title("Steady-State Temperature vs. Signed PWM")
+axes.set_title("Baseline-Corrected Temperature vs. Signed PWM")
 axes.set_xlabel("Signed PWM (counts; cooling is negative)")
 axes.set_ylabel("Steady-state temperature (°C)")
 axes.grid(True, color="#d9dee5", linewidth=0.8)
@@ -93,4 +108,5 @@ figure.savefig(OUTPUT_PATH, dpi=180)
 for name, points, slope, _, _, _ in series:
     print(f"{name} fit slope: {slope:.4f} °C per PWM count")
     print(f"{name} points: {[(x, round(y, 2)) for x, y in points]}")
+print(f"Corrected zero-PWM temperature: {CORRECTED_AMBIENT_C:.1f} °C")
 print(f"Saved plot: {OUTPUT_PATH}")
