@@ -19,23 +19,26 @@ Steady State for 45C heating - 30 pwm
 
 # Part 3
 
-0pwm Heating: StartTime: 27s, Temp 28C, EndTime: 100s, EndTemp: 34C
-8pwm Heating: StartTime: 0s, Temp: 34C, EndTime: 125s, EndTemp: 39C
-15pwm Heating: StartTime: 0s, Temp: 23C, EndTime: 165s, EndTemp: 42C
-23pwm Heating: StartTime: 0s, Temp: 28C, EndTime: 130s, EndTemp: 46C
-30pwm Heating: StartTime: 0s, Temp: 33C, EndTime: 125s, EndTemp: 50C
+ PWM Heating and Cooling Estimates Table
 
-0pwm Cooling: StartTime: 0s, Temp: 51C, EndTime: 200s, EndTemp: 37C
-33pwm Cooling: StartTime: 0s, Temp: 38C, EndTime: 185s, EndTemp: 30.5C
-65pwm Cooling: StartTime: 0s, Temp: 30C, EndTime: 140s, EndTemp: 24.5C
-98pwm Cooling: StartTime: 0s, Temp: 47C, EndTime: 207s, EndTemp: 18C
-130pwm Cooling: StartTime: 0s, Temp: 33C, EndTime: 290s, EndTemp: 10.4C
+| PWM | Mode | StartTime | Temp | EndTime | EndTemp |
+|---|---|---:|---:|---:|---:|
+| 0pwm | Heating | 27s | 28C | 100s | 34C |
+| 8pwm | Heating | 0s | 34C | 125s | 39C |
+| 15pwm | Heating | 0s | 23C | 165s | 42C |
+| 23pwm | Heating | 0s | 28C | 130s | 46C |
+| 30pwm | Heating | 0s | 33C | 125s | 50C |
+| 0pwm | Cooling | 0s | 51C | 200s | 37C |
+| 33pwm | Cooling | 0s | 38C | 185s | 30.5C |
+| 65pwm | Cooling | 0s | 30C | 140s | 24.5C |
+| 98pwm | Cooling | 0s | 47C | 207s | 18C |
+| 130pwm | Cooling | 0s | 33C | 290s | 10.4C |
 
 # Part 4: Temperature vs. Signed PWM
 
 ![Steady-state temperature versus signed PWM](Part%204/temperature_vs_signed_pwm.png)
 
-
+The following table includes values from the temperature_measurements.csv file.
 
 | Direction | PWM (counts) | Steady-state temperature (°C) |
 |---|---:|---:|
