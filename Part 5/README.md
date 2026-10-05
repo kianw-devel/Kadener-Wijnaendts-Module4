@@ -153,3 +153,15 @@ r_{\mathrm{Laird},\max}
 $$
 
 Thus the manufacturer-based maximum-current prediction is $r_{\mathrm{Laird},\max}\approx2.56$. This is close to the measured apparatus value $r\approx2.45$, which is about 4% lower than the datasheet-model prediction.
+
+---
+
+## 4. Interpret the Comparison
+
+The datasheet maximum-current prediction, $r_{\mathrm{Laird},\max}\approx2.56$, is close to but not identical to the measured value, $r\approx2.45$; the measured ratio is about 4% lower. Exact agreement is not expected because the two values describe different operating conditions and because both the apparatus and the simplified model have nonideal effects.
+
+A duty cycle of $D=1$ means that the H-bridge is continuously on, but it does not guarantee that $I=I_{\max}$. The actual current is determined by the power-supply voltage and current limit, H-bridge and wiring voltage drops, and the TEC resistance, whereas the datasheet maximum-current values correspond to the manufacturer's specified operating point, including $V_{\max}=13.9\ \text{V}$ and a hot-side temperature of $27^\circ\text{C}$.
+
+The experiment also uses PWM rather than ideal steady DC. The Peltier contribution depends on average current, while Joule heating depends on the average of current squared. In addition, the measurements were made at finite temperature differences rather than only at $\Delta T=0$, and the apparatus has passive heat paths through its supports, wires, and surrounding air. TEC resistance, Peltier coefficient, and thermal properties can change with temperature, and each measured branch has some curvature even though it was summarized using one fitted slope. These effects can account for the modest difference between the measured and datasheet ratios.
+
+When the object is hotter than room temperature, passive heat flows from the object to the room, opposing TEC heating. When the object is colder than room temperature, passive heat flows from the room into the object, opposing TEC cooling. Approximately symmetric passive conduction therefore resists the temperature displacement in both directions. By itself, however, symmetric conduction affects heating and cooling similarly and cannot explain their unequal slope magnitudes. The main asymmetry comes from Joule heating: it adds to the object-face heating contribution in the heating direction but subtracts from the useful Peltier cooling contribution in the cooling direction.
