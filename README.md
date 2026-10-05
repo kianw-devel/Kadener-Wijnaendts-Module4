@@ -6,7 +6,6 @@
 
 ![Heating and cooling temperature versus signed PWM with linear fits](Part%204/temperature_vs_signed_pwm.png)
 
-The graph combines the steady-state heating and cooling measurements using signed PWM, with heating positive and cooling negative. The heating fit used $u=0$ to $30$ PWM, while the cooling fit used $u=0$ to $-130$ PWM. The heating data are close to linear over the measured range. The cooling data are also approximately linear, although there is mild curvature near the strongest cooling point; therefore, the reported cooling slope is an overall fit across the measured range rather than a strictly local slope.
 
 ## 2. Part 5.1: Measured Slopes
 
@@ -102,12 +101,12 @@ Thus, the object-face Joule heating is approximately 42% of the Peltier heat-tra
 
 ## 4. Part 5.3: Laird Datasheet Calculation
 
-The values come from the **Specifications** table on page 3 of the [Laird CP14-127-045-L1-W4.5 datasheet](https://lairdthermal.com/datasheets/datasheet-CP14-127-045-L1-W4.5.pdf), using the column for a hot-side temperature of $27^\circ\mathrm C$.
+The values come from the Specifications table on page 3 of the datasheet, using the column for a hot-side temperature of $27^\circ\mathrm C$.
 
 - $R_M=1.50\ \Omega$ is the module's effective electrical resistance at the stated $27^\circ\mathrm C$ hot-side condition.
-- $I_{\max}=8.6\ \mathrm A$ is the maximum rated current; the table identifies it as the current at $\Delta T_{\max}$.
+- $I_{\max}=8.6\ \mathrm A$ is the maximum current; the table identifies it as the current at $\Delta T_{\max}$.
 - $Q_{c,\max}=71.3\ \mathrm W$ is the maximum cold-side heat pumping at $\Delta T=0$.
-- $\Delta T_{\max}=70.5^\circ\mathrm C$ is the maximum face-to-face temperature difference at zero cold-side heat load, $Q_c=0$.
+- $\Delta T_{\max}=70.5^\circ\mathrm C$ is the maximum face-to-face temperature difference at zero cold-side heat load,
 
 The symmetric model assigns half of the total Joule heating to the object face:
 
