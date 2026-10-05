@@ -139,9 +139,9 @@ $$
 
 ## 5. Part 5.4: Compare the Ratios
 
-The measured ratio $r\approx2.45$ is about 4% below the datasheet-model prediction $r_{\mathrm{Laird},\max}\approx2.56$. Exact agreement is not expected because the datasheet values describe a specified maximum-current condition, while the apparatus has different electrical and thermal conditions. In particular, $D=1$ only means that the H-bridge is continuously on; it does not guarantee $I=I_{\max}$. The actual current depends on the 12 V power supply and its current limit, H-bridge and wiring voltage drops, and the temperature-dependent TEC resistance, whereas the datasheet maximum-current point uses $V_{\max}=13.9\ \mathrm V$ with the hot side at $27^\circ\mathrm C$.
+The measured ratio $r\approx2.45$ is around 4% lower than the result obtained from the datasheet values $r_{\mathrm{Laird},\max}\approx2.56$. It is not expected for these values to agree exactly ebcasue the datasheet describes a specific max-current condition, while the measured ratio comes from the apparatus which has different thermal and electrical conditions. $D=1$ only means that the H-bridge is on continously. It does not guarantee that $I=I_{\max}$ since the actual current depends on the 12V power supply's current limit, H-bridge wiring and voltage drops, as well as the temp-dependent TEC resistance, while the datasheet max-current point uses $V_{\max}=13.9\ \mathrm V$ with the hot side at $27^\circ\mathrm C$.
 
-The experiment also uses PWM instead of ideal steady DC, operates at finite temperature differences, and includes passive heat paths through the supports, leads, and surrounding air. Material properties vary with temperature, and fitting a slightly curved branch with one straight line also changes the measured ratio. These effects make the modest discrepancy reasonable.
+Additionally, the experiment also use PWM rather than the ideal steady DC, operates at finite temperature differences, and has passive heat paths through the suports, leads, and air. Material properties change based on the temperature. These factors make such a small discrepancy reasonable.
 
 ## 6. Part 5.4: Passive Conduction
 
