@@ -95,12 +95,12 @@ So the Joule heating is about 42% of the Peltier heating. This matches the near-
 
 ## 3. Find and Use the Datasheet Maximum-Current Data
 
-From the Laird CP14-127-045 datasheet at a hot-side temperature of $27^\circ\text{C}$, the relevant values are:
+From the Laird CP14-127-045 datasheet at a hot-side temperature of $27^\circ\text{C}$, the relevant values and operating conditions are:
 
-- module resistance: $R_M = 1.50\ \Omega$
-- maximum current: $I_{\max} = 8.6\ \text{A}$
-- maximum cold-side heat pumping at $\Delta T = 0$: $Q_{c,\max} = 71.3\ \text{W}$
-- maximum temperature difference: $\Delta T_{\max} = 70.5^\circ\text{C}$
+- **Module resistance:** $R_M = 1.50\ \Omega$ is the module's effective electrical resistance for the datasheet model at a hot-side temperature of $27^\circ\text{C}$.
+- **Maximum current:** $I_{\max} = 8.6\ \text{A}$ is the manufacturer's maximum rated current for the module at the $27^\circ\text{C}$ hot-side condition.
+- **Maximum cold-side heat pumping:** $Q_{c,\max} = 71.3\ \text{W}$ is the largest cold-side heat-removal rate at $\Delta T=0$ under the datasheet maximum-current condition with the hot side at $27^\circ\text{C}$.
+- **Maximum temperature difference:** $\Delta T_{\max} = 70.5^\circ\text{C}$ is the largest hot-to-cold face temperature difference at zero cold-side heat load, under the datasheet maximum-current condition with the hot side at $27^\circ\text{C}$.
 
 The corresponding voltage at this maximum-current condition is $V_{\max} = 13.9\ \text{V}$.
 These are the manufacturer maximum-current conditions, and they define the rated operating point for the module. They are not necessarily the exact conditions in our apparatus, but they provide the correct values for the model. The actual current depends on the power-supply voltage and current limit, the H-bridge voltage drop, the wiring, and the TEC resistance.
@@ -109,6 +109,15 @@ At $\Delta T = 0$, the passive conduction term is zero, so a simple symmetric TE
 
 $$
 \dot Q_{J,\max} = \frac{1}{2} I_{\max}^2 R_M.
+$$
+
+Substituting the datasheet values gives
+
+$$
+\dot Q_{J,\max}
+=\frac{1}{2}(8.6\ \text{A})^2(1.50\ \Omega)
+=55.47\ \text{W}
+\approx55.5\ \text{W}.
 $$
 
 Cooling at the object face is the Peltier heat pumping minus this Joule heat:
@@ -123,10 +132,24 @@ $$
 \dot Q_{P,\max} = Q_{c,\max} + \dot Q_{J,\max}.
 $$
 
-Then the data-sheet maximum-current prediction is
+Therefore,
 
 $$
-T_{\mathrm{Laird},\max} = \frac{\dot Q_{P,\max} + \dot Q_{J,\max}}{\dot Q_{P,\max} - \dot Q_{J,\max}}.
+\dot Q_{P,\max}
+=71.3\ \text{W}+55.47\ \text{W}
+=126.77\ \text{W}
+\approx126.8\ \text{W}.
 $$
 
-This is the manufacturer-based estimate for the maximum-current operating condition, and it should be compared directly with the measured value from the apparatus.
+Then the datasheet maximum-current prediction is
+
+$$
+r_{\mathrm{Laird},\max}
+=\frac{\dot Q_{P,\max} + \dot Q_{J,\max}}
+{\dot Q_{P,\max} - \dot Q_{J,\max}}
+=\frac{126.77+55.47}{126.77-55.47}
+=\frac{182.24}{71.30}
+\approx2.56.
+$$
+
+Thus the manufacturer-based maximum-current prediction is $r_{\mathrm{Laird},\max}\approx2.56$. This is close to the measured apparatus value $r\approx2.45$, which is about 4% lower than the datasheet-model prediction.
